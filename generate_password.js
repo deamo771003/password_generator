@@ -11,7 +11,8 @@ function generatePassword() {
     lowercase: 'on',
     uppercase: 'on',
     numbers: 'on',
-    excludeCharacters: '04'
+    symbols: 'on',
+    excludeCharacters: '0'
   }
 
   // create a collection to store things user picked up
@@ -39,8 +40,19 @@ function generatePassword() {
       character => !options.excludeCharacters.includes(character)
     )
   }
-  console.log(collection)
+  // console.log(collection)
   // start generate password
+  // 依使用者需求數量隨機抓collection內資訊進某空間
+  function Sample(collection) {
+    let randomIndex = Math.floor(Math.random() * collection.length)
+    return collection[randomIndex]
+  }
+
+  let outputPassword = ''
+  for (let i = 1; i <= options.length; i++) {
+    outputPassword += Sample(collection)
+  }
+  console.log(outputPassword)
 
   //return password
 
