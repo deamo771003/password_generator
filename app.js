@@ -21,11 +21,12 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-  const outputPassword = generatePassword(req.body)
+  const options = req.body
+  const outputPassword = generatePassword(options)
   // console.log(generatePassword(req.body))
   // 抓取bodyParser(客戶回傳資料)資料
   // console.log('req.body', req.body)
-  res.render('index', { outputPassword: outputPassword })
+  res.render('index', { outputPassword: outputPassword, options: options })
 })
 
 
