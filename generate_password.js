@@ -46,7 +46,12 @@ function generatePassword(options) {
       character => !options.excludeCharacters.includes(character)
     )
   }
-  // console.log(collection)
+
+  // return error notice if collection is empty
+  if (collection.length === 0) {
+    return 'There is no valid characters is your selection.'
+  }
+
   // start generate password
   // 依使用者需求數量隨機抓collection內資訊進某空間
   let outputPassword = ''
