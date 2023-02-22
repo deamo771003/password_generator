@@ -1,4 +1,10 @@
-function generatePassword() {
+// random generate password
+function Sample(collection) {
+  let randomIndex = Math.floor(Math.random() * collection.length)
+  return collection[randomIndex]
+}
+
+function generatePassword(options) {
   // define things user might want
   const lowerCaseLetters = 'abcdefghijklmnopqrstuvwxyz'
   const upperCaseLetters = lowerCaseLetters.toUpperCase()
@@ -6,14 +12,14 @@ function generatePassword() {
   const symbols = '~!@#$%^&*()_+{}:"<>?-=[];,./'
 
   // define dummy data
-  const options = {
-    length: '12',
-    lowercase: 'on',
-    uppercase: 'on',
-    numbers: 'on',
-    symbols: 'on',
-    excludeCharacters: '0'
-  }
+  // const options = {
+  //   length: '12',
+  //   lowercase: 'on',
+  //   uppercase: 'on',
+  //   numbers: 'on',
+  //   symbols: 'on',
+  //   excludeCharacters: '0'
+  // }
 
   // create a collection to store things user picked up
   let collection = []
@@ -43,19 +49,15 @@ function generatePassword() {
   // console.log(collection)
   // start generate password
   // 依使用者需求數量隨機抓collection內資訊進某空間
-  function Sample(collection) {
-    let randomIndex = Math.floor(Math.random() * collection.length)
-    return collection[randomIndex]
-  }
-
   let outputPassword = ''
   for (let i = 1; i <= options.length; i++) {
     outputPassword += Sample(collection)
   }
-  console.log(outputPassword)
+  // console.log(outputPassword)
 
   //return password
-
+  return outputPassword
 }
 
-generatePassword()
+// export generatePassword function for other file to use
+module.exports = generatePassword
